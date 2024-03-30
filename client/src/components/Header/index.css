@@ -1,0 +1,29 @@
+.icon{
+    height: 100px;
+    width: 100px;
+    cursor: pointer;
+}
+.header-bg{
+    padding: 1em;
+}
+
+.header-container-bg{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-elements-bg{
+    display: flex;    
+    justify-content: space-evenly;
+    align-items: center;
+    width: 48%;
+}
+
+.nav-el{
+    cursor: pointer;
+}
+.moon{
+    height: 40px;
+    width: 40px;
+}

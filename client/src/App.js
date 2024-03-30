@@ -31,12 +31,10 @@ const App = () => {
     fetchData();
   }, []); // Empty dependency array, so the effect runs only once after component mounts
 
-  return (
-    <div>
-      <MyContext.Provider value={userDetails}>
-        <Header />
-      </MyContext.Provider>
-    </div>
+  return ( 
+    <MyContext.Provider value={userDetails}>
+      <Header />
+    </MyContext.Provider>
   );
 };
 
