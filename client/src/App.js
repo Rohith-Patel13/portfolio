@@ -1,7 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
-import Header from "./components/Header/index";
+import {ThreeDots} from 'react-loader-spinner'
 
+
+import "./index.css"
+
+
+
+import Header from "./components/Header/index";
+import Home from './components/Home/index'
+import { MyContext } from './components/MyContext';
 // import About from "./components/About/index";
 // import Services from "./components/Services/index";
 // import Skills from "./components/Skills/index";
@@ -10,33 +18,83 @@ import Header from "./components/Header/index";
 // import Testimonials from "./components/Testimonials/index";
 // import Footer from "./components/Footer/index";
 
-import { MyContext } from './components/MyContext/index';
+
+const apiStatusConstants = {
+  initial : 'INITIAL',
+  loading:'IN_PROGRESS',
+  success:'SUCCESS',
+  failure:'FAILURE'
+}
 
 const App = () => {
-  // Initialize userDetails state variable and setUserDetails function
-  const [userDetails, setUserDetails] = useState(null);
-
+  const [userDetail,setUserDetails]=useState(null)
+  const [RetrieveStatus,setRetrieveStatus] = useState(apiStatusConstants.loading)
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const fetchedDataValue = await axios.get('https://portfolio-backend-30mp.onrender.com/api/v1/get/user/65b3a22c01d900e96c4219ae');
-        const { data } = fetchedDataValue;
-        const { user } = data;
-        console.log(user, "user");
-        setUserDetails(user);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-    fetchData();
+      const fetchData = async () => {
+        try {
+          const fetchedDataValue = await axios.get("https://portfolio-backend-30mp.onrender.com/api/v1/get/user/65b3a22c01d900e96c4219ae");
+          const { data,status } = fetchedDataValue;
+          // console.log(fetchedDataValue)
+          const { user } = data;
+          // console.log(user, "user");
+          // console.log(status)
+          
+          if(status===200){
+              setRetrieveStatus(apiStatusConstants.success)
+              setUserDetails(user);
+            }else{
+              setRetrieveStatus(apiStatusConstants.failure)
+          }
+        } catch (error) {
+          console.error('Error fetching data:', error);
+          setRetrieveStatus(apiStatusConstants.failure)
+        }
+      };
+      fetchData();
   }, []); // Empty dependency array, so the effect runs only once after component mounts
+  
+  const renderLoadingView=()=>(
+      <div>
+        <ThreeDots type="ThreeDots" color="#6D54F1" height={80} width={80} />
+      </div>
+  )
+
+  const renderFailureView=()=>(
+      <>
+        <h1>Something Went Wrong,Please Try Again After Sometime.</h1>
+        <h2>Check Your Internet Connection</h2>
+      </>
+  )
+
+  const renderSuccessView = ()=>{
+    
+    return(
+        <MyContext.Provider value={userDetail}>
+          <Home/>
+        </MyContext.Provider>
+    )
+}
+
+const getFinalResult=()=>{     
+    switch (RetrieveStatus) {
+      case apiStatusConstants.loading:         
+        return renderLoadingView()     
+      case apiStatusConstants.success:
+        return renderSuccessView()           
+      case apiStatusConstants.failure:         
+        return renderFailureView()
+      default:
+        return null
+    }
+}
+
 
   return ( 
-    <MyContext.Provider value={userDetails}>
+    <>
       <Header />
-    </MyContext.Provider>
+      {getFinalResult()}
+    </>
   );
 };
 
 export default App;
-
