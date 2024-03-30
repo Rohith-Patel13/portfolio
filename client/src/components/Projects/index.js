@@ -1,18 +1,20 @@
-import { useContext } from 'react'
+import {useContext} from 'react'
 import { MyContext } from '../MyContext/index'
 
 import "./index.css"
 
-const Services = () => {
+const Projects = () => {
+
+   
 
   const userDetail = useContext(MyContext)
-  console.log(userDetail,"userDetail")  
+  console.log(userDetail,"userDetail") 
 
   return (
     <div>
-      <h1>Services</h1>
+      <h1>Projects</h1>
     </div>
   )
 }
 
-export default Services
+export default Projects
