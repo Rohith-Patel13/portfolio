@@ -13,8 +13,12 @@ const Home = () => {
     <div className='home-bg'>
       <img src={url} alt={name} className='my-image' />
       <div>
-      <p>{`Hi,this is ${name}.I'm a ${title}`}</p>
-      <p>{quote}</p>
+        <h1 className='name-intro'>Hi,this is</h1>
+        <div className='name-bg'>
+          <p className='name'>{name}</p>
+        </div>
+        <p className='jobtitle'>I'm a {title}</p>
+        <p className='quote'>{quote}</p>
       </div>  
     </div>
   )

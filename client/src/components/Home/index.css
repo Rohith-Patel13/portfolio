@@ -4,6 +4,93 @@
     align-items: center;
 }
 
-.my-image{
-    height: 580px;
+@keyframes jumpDown {
+    0% {
+      transform: translateY(-100px); /* Initial position - 100px above */
+      opacity: 0; /* Start transparent */
+    }
+    100% {
+      transform: translateY(0); /* Final position - normal */
+      opacity: 1; /* Fully visible */
+    }
+  }
+.my-image {
+    height: 560px;
+    animation: jumpDown 1s ease-in-out; /* Apply the animation */
+  }
+
+@keyframes jumpIn {
+    0% {
+      transform: translateY(20px); /* Initial position - 20px above */
+      opacity: 0; /* Start transparent */
+    }
+    100% {
+      transform: translateY(0); /* Final position - normal */
+      opacity: 1; /* Fully visible */
+    }
+}
+
+.name-intro{
+    font-weight: 400;
+    margin-bottom: 0px;
+}
+.name-bg{
+    margin-top: 10px;
+    border: 1px solid black;
+    border-radius: 6em;
+    padding: 3em;  /*1em=16px*/
+    box-shadow: 0px 4px 8px bisque;
+    /* cursor: pointer; */
+    animation: jumpIn 1s ease-in-out; /* Apply the animation */
+}
+
+@font-face {
+    font-family: myFont;
+    src: url(../../style/SuperSunday.ttf);
+}
+
+.name{
+    margin-top: 0px;
+    color:blueviolet;
+    font-size: 100px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-family: myFont;
+    /* cursor: pointer; */
+    animation: jumpIn 1s ease-in-out; /* Apply the animation */
+}
+
+.jobtitle{
+    font-size: 40px;
+    line-height: 20px;
+}
+
+.quote{
+    font-style: cursive;
+}
+
+@keyframes slideIn {
+    0% {
+      transform: translateX(-50px); /* Initial position - 50px left */
+      opacity: 0; /* Start transparent */
+    }
+    100% {
+      transform: translateX(0); /* Final position - normal */
+      opacity: 1; /* Fully visible */
+    }
+  }
+  
+  .name-intro,
+  .jobtitle,
+  .quote {
+    animation: slideIn 1s ease-in-out; /* Apply the animation */
+  }
+
+@media screen and (max-width:960px) {
+    .home-bg{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 }

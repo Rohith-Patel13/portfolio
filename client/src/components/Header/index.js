@@ -38,7 +38,7 @@ const Header = () => {
     if(particularElementRef.current){
       particularElementRef.current.style.fontWeight="bold"
       particularElementRef.current.style.fontSize="20px"
-      particularElementRef.current.style.color="#6D54F1"
+      particularElementRef.current.style.color="blueviolet"
     }
   }
 
