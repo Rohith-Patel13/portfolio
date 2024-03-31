@@ -3,17 +3,17 @@ import axios from 'axios';
 import {ThreeDots} from 'react-loader-spinner'
 
 
-import "./index.css"
+import "./App.css"
 
 
 
 import Header from "./components/Header/index";
 import Home from './components/Home/index'
 import { MyContext } from './components/MyContext';
-// import About from "./components/About/index";
-// import Services from "./components/Services/index";
-// import Skills from "./components/Skills/index";
-// import Projects from "./components/Projects/index";
+import About from "./components/About/index";
+import Services from "./components/Services/index";
+import Skills from "./components/Skills/index";
+import Projects from "./components/Projects/index";
 // import Timeline from './components/Timeline/index';
 // import Testimonials from "./components/Testimonials/index";
 // import Footer from "./components/Footer/index";
@@ -71,9 +71,14 @@ const App = () => {
     return(
         <MyContext.Provider value={userDetail}>
           <Home/>
+          <About/>
+          <Services/>
+          <Skills />
+          <Projects/>
         </MyContext.Provider>
     )
 }
+
 
 const getFinalResult=()=>{     
     switch (RetrieveStatus) {

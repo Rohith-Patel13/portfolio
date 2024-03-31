@@ -6,14 +6,14 @@ const Home = () => {
   const userDetail=useContext(MyContext) 
   console.log(userDetail,"userDetail")
   const {about} = userDetail
-  const {name,alternateAvatars,quote,subTitle,title} = about
+  const {name,alternateAvatars,quote,title} = about
   const profileImageObject=alternateAvatars[0]
   const {url} = profileImageObject
   return (
     <div className='home-bg'>
-      <img src={url} alt={name} />
+      <img src={url} alt={name} className='my-image' />
       <div>
-      <p>{`Hi My name is ${name},I'm a ${title},${subTitle}`}</p>
+      <p>{`Hi,this is ${name}.I'm a ${title}`}</p>
       <p>{quote}</p>
       </div>  
     </div>
