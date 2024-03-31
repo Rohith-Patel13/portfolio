@@ -26,6 +26,7 @@
 
 .nav-el{
     cursor: pointer;
+    font-size: 17px;
 }
 .moon{
     height: 40px;
