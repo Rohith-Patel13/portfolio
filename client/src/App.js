@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState ,useRef} from 'react';
 import axios from 'axios';
 import {ThreeDots} from 'react-loader-spinner'
 
@@ -27,6 +27,13 @@ const apiStatusConstants = {
 }
 
 const App = () => {
+  const sectionRef= useRef(null)
+  const aboutRef=useRef(null)
+  const servicesRef=useRef(null)
+  const skillsRef=useRef(null)
+  const projectsRef=useRef(null)
+
+  
   const [userDetail,setUserDetails]=useState(null)
   const [RetrieveStatus,setRetrieveStatus] = useState(apiStatusConstants.loading)
   useEffect(() => {
@@ -71,11 +78,11 @@ const App = () => {
     
     return(
         <MyContext.Provider value={userDetail}>
-          <Home/>
-          <About/>
-          <Services/>
-          <Skills />
-          <Projects/>
+          <div ref={sectionRef}><Home/></div>
+          <div ref={aboutRef}><About/></div>
+          <div ref={servicesRef}><Services/></div>
+          <div ref={skillsRef}><Skills /></div>
+          <div ref={projectsRef}><Projects/></div>
         </MyContext.Provider>
     )
 }
@@ -97,8 +104,10 @@ const getFinalResult=()=>{
 
   return ( 
     <>
+    <MyContext.Provider value={{sectionRef,aboutRef,skillsRef,projectsRef,servicesRef}}>
       <Header />
       {getFinalResult()}
+    </MyContext.Provider>
     </>
   );
 };
