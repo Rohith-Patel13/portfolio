@@ -54,10 +54,11 @@ const App = () => {
   }, []); // Empty dependency array, so the effect runs only once after component mounts
   
   const renderLoadingView=()=>(
-      <div>
+      <div className='loading-bg'>
         <ThreeDots type="ThreeDots" color="#6D54F1" height={80} width={80} />
       </div>
   )
+
 
   const renderFailureView=()=>(
       <>

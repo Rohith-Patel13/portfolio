@@ -5,6 +5,10 @@
 }
 .header-bg{
     padding: 1em;
+    position: sticky;
+    top: 0;
+    background-color: antiquewhite;
+    margin-bottom: 0.8em;
 }
 
 .header-container-bg{

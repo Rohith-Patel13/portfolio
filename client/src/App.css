@@ -1,3 +1,11 @@
 ::-webkit-scrollbar{
     display: none;
 }
+
+.loading-bg{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
